@@ -24,3 +24,61 @@
     /ticket/{id} GET Get individual ticket
     /ticket/{id} PUT Amend ticket lines
     /status/{id} PUT Retrieve status of ticket
+
+
+## REST URLs --- Ticket REST Services
+
+### URL For Generating the ticket with N-lines (Post Request) 
+
+    URL: http://localhost:8080/ticket?lines=5
+
+### URL Fetching the Tickets (Get Request)
+
+    URL : http://localhost:8080/ticket
+   
+       Output: [
+        {
+            "id": 1,
+            "status": "CHECKED",
+            "linesCount": 2
+        },
+        {
+            "id": 2,
+            "status": "NEW",
+            "linesCount": 5
+        }
+    ]
+   ### URL Update/Add the Lines in Tickets ( Put Request )
+   
+      URL : http://localhost:8080/ticket/2?lines=6
+      
+  ### Status of Ticket ( Get Request )
+  
+      URL : http://localhost:8080/status/2
+   
+      Output:
+          {
+        "id": 1,
+        "status": "CHECKED",
+        "lines": [
+            {
+                "id": 2,
+                "values": [
+                    0,
+                    1,
+                    1
+                ],
+                "outcome": 10
+            },
+            {
+                "id": 1,
+                "values": [
+                    0,
+                    1,
+                    2
+                ],
+                "outcome": 1
+            }
+        ],
+        "linesCount": 2
+    }
